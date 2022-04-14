@@ -1,3 +1,3 @@
 
-web: gunicorn app:model.pkl
+web: gunicorn app:model.py
 web: gunicorn app:app
