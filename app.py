@@ -6,7 +6,12 @@ app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 # @app.route('/')
 def index():
-    return "Hello world"
+    cgpa = request.form.get('cgpa')
+    iq = request.form.get('iq')
+    profile_score = request.form.get('profile_score')
+    input_query = np.array([[cgpa,iq,profile_score]])
+    return input_query
+#     return "Hello world"
 # @app.route('/predict',methods=['POST'])
 @app.route('/')
 def predict():
