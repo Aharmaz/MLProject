@@ -2,3 +2,8 @@ flask
 numpy
 sklearn
 gunicorn
+farasapy
+pyarabic
+nltk
+json
+requests
