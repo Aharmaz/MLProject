@@ -5,5 +5,5 @@ gunicorn
 farasapy
 pyarabic
 nltk
-json
+json==1.6.1
 requests
