@@ -1,1 +1,2 @@
-web: gunicorn app:script
+#web: gunicorn app:script
+worker: python script.py
