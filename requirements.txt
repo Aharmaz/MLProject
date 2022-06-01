@@ -7,6 +7,5 @@ pyarabic
 nltk
 requests
 pandas
-string
 itertools
 random
