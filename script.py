@@ -5,7 +5,9 @@ app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 # @app.route('/')
 def index():
-    return "Hello world"
+    a="hello "
+    b="world!"
+    return a+b
 #     return "Hello world"
 # @app.route('/predict',methods=['POST'])
 @app.route('/')
