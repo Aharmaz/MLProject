@@ -112,7 +112,7 @@ app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 # @app.route('/')
 def index():
-    return s
+    return "Hello world"
 #     return "Hello world"
 # @app.route('/predict',methods=['POST'])
 @app.route('/')
@@ -123,6 +123,6 @@ def predict():
     # input_query = np.array([[cgpa,iq,profile_score]])
     # result = model.predict(input_query)[0]
     # return jsonify({'placement':str(result)})
-    return "hello world"
+    return s
 if __name__ == '__main__':
     app.run(debug=True)
