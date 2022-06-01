@@ -1,6 +1,6 @@
 
 from flask import Flask,request,jsonify
-model = pickle.load(open('nlpModel','rb'))
+model = pickle.load(open('model.pkl','rb'))
 app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 # @app.route('/')
@@ -16,7 +16,6 @@ def predict():
     # input_query = np.array([[cgpa,iq,profile_score]])
     # result = model.predict(input_query)[0]
     # return jsonify({'placement':str(result)})
-    s=model.predict()
-    return s
+    return "s"
 if __name__ == '__main__':
     app.run(debug=True)
