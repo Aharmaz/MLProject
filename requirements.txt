@@ -7,5 +7,4 @@ pyarabic
 nltk
 requests
 pandas
-itertools
-random
+
