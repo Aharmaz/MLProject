@@ -1,4 +1,5 @@
-import string
+
+from flask import Flask,request,jsonify
 import pandas as pd
 import pyarabic.araby as araby
 from pyarabic.araby import is_arabicrange
@@ -84,7 +85,6 @@ s = ' '.join(word for word in text.split() if word not in stopwords_arabic)
 # for i in stopwords_arabic:
 #   text=text.replace(i,"")
 # text
-print(s)
 import random
 s=s.split()
 s = random.choices(s, k=len(s))
@@ -106,8 +106,7 @@ d={
 for i in d:
     s=s.replace(d[i],i)
 
-from flask import Flask,request,jsonify
-model = pickle.load(open('model.pkl','rb'))
+#model = pickle.load(open('model.pkl','rb'))
 app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 # @app.route('/')
