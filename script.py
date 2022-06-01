@@ -5,7 +5,7 @@ from pyarabic.araby import is_arabicrange
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
-from gensim.models import Word2Vec , KeyedVectors
+#from gensim.models import Word2Vec , KeyedVectors
 df = pd.read_json('arabicPresidentJson.json')
 arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
 english_punctuations = string.punctuation
