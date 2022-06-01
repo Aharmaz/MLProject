@@ -10,13 +10,13 @@ from flask import Flask,request,jsonify
 
 
 
-
+import string
 import pandas as pd
 import pyarabic.araby as araby
 from pyarabic.araby import is_arabicrange
 import nltk
-#nltk.download('stopwords')
-#from gensim.models import Word2Vec , KeyedVectors
+# nltk.download('stopwords')
+from gensim.models import Word2Vec , KeyedVectors
 from nltk.corpus import stopwords
 df = pd.read_json('arabicPresidentJson.json')
 arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
