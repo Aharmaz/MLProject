@@ -141,7 +141,7 @@ app = Flask(__name__)
 def index():
     a="hello "
     b="world!"
-    return s
+    return "lah yn3l xitan"
 #     return "Hello world"
 # @app.route('/predict',methods=['POST'])
 @app.route('/')
