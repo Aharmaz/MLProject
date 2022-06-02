@@ -76,15 +76,15 @@ def predict():
     url = 'https://farasa.qcri.org/webapi/lemmatization/'
     api_key = "MtYakbZGWQfPUoObzk"
     payload = {'text': text, 'api_key': api_key}
-    data = requests.post(url, data=payload)
-    text = json.loads(data.text)['text']
+#     data = requests.post(url, data=payload)
+#     text = json.loads(data.text)['text']
     
     
     
 #     s=text
 #     s=s.split()
-    s = random.choices(text, k=len(s))
-    s = ' '.join(a for a in s)
+#     s = random.choices(text, k=len(s))
+#     s = ' '.join(a for a in s)
     d={
         "المدرسة الوطنية للعلوم التطبيقية":"ensa",
         "كلية الطب والصيدلة":"fmp",
@@ -98,10 +98,10 @@ def predict():
         "فاس":"fes",
         "وجدة":"oujda"
         }
-    for i in d:
-        s=s.replace(d[i],i)
+#     for i in d:
+#         s=s.replace(d[i],i)
     # return jsonify({'placement':str(result)})
-    return str(flat_list)
+    return text
 
 
 
