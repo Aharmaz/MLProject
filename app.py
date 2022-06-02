@@ -71,7 +71,7 @@ def predict():
         }
     for i in d:
         text=text.replace(i,d[i])
-    text=stemmer.stem(text)
+#     text=stemmer.stem(text)
 
     url = 'https://farasa.qcri.org/webapi/lemmatization/'
     api_key = "MtYakbZGWQfPUoObzk"
