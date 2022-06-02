@@ -51,7 +51,7 @@ def remove_stopWords(s):
     s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
     return s
 
-df.loc[:,"post_text"] = df.post_text.apply(lambda x: remove_stopWords(x))
+#df.loc[:,"post_text"] = df.post_text.apply(lambda x: remove_stopWords(x))
 
 tokenized_postes = [araby.tokenize(post_text, conditions=is_arabicrange) for post_text in df['post_text'].values]
 
@@ -90,12 +90,13 @@ for i in d:
     text=text.replace(i,d[i])
 
 text=stemmer.stem(text)
-stopwords_arabic = set(stopwords.words('arabic'))
-stopwords_arabic
-s = ' '.join(word for word in text.split() if word not in stopwords_arabic)
+# stopwords_arabic = set(stopwords.words('arabic'))
+# stopwords_arabic
+# s = ' '.join(word for word in text.split() if word not in stopwords_arabic)
 # for i in stopwords_arabic:
 #   text=text.replace(i,"")
 # text
+s=text
 import random
 s=s.split()
 s = random.choices(s, k=len(s))
