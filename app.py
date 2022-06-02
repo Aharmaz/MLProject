@@ -1,24 +1,12 @@
 
 from flask import Flask,request,jsonify
+import string
+import pandas as pd
+import pyarabic.araby as araby
+from pyarabic.araby import is_arabicrange
+from farasa.stemmer import FarasaStemmer
+import itertools
 #model = pickle.load(open('model.pkl','rb'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app = Flask(__name__)
 
@@ -28,29 +16,9 @@ app = Flask(__name__)
 
 
 
-@app.route('/predict',methods=['POST'])
-# @app.route('/')
-def index():
-    a="hello "
-    b="world!"
-    return "lah yn3l xitan"
-#     return "Hello world"
-# @app.route('/predict',methods=['POST'])
-@app.route('/')
-def predict():
-    # cgpa = request.form.get('cgpa')
-    # iq = request.form.get('iq')
-    # profile_score = request.form.get('profile_score')
-    # input_query = np.array([[cgpa,iq,profile_score]])
-    # result = model.predict(input_query)[0]
-    # return jsonify({'placement':str(result)})
-    return "s"
-if __name__ == '__main__':
+
   
-import string
-import pandas as pd
-import pyarabic.araby as araby
-from pyarabic.araby import is_arabicrange
+
 # import nltk
 # nltk.download('stopwords')
 # from gensim.models import Word2Vec , KeyedVectors
@@ -68,7 +36,7 @@ def remove_punctuations(text):
 
 
 df.loc[:,"post_text"] = df.post_text.apply(lambda x : remove_punctuations(x))
-from farasa.stemmer import FarasaStemmer
+
 stemmer = FarasaStemmer()
 
 def lemmatization(text):
@@ -92,7 +60,7 @@ def lemmatization(text):
 
 tokenized_postes = [araby.tokenize(post_text, conditions=is_arabicrange) for post_text in df['post_text'].values]
 
-import itertools
+
 
 flat_list = list(itertools.chain(*tokenized_postes))
 
@@ -163,10 +131,27 @@ for i in d:
 
 
 
+@app.route('/predict',methods=['POST'])
+# @app.route('/')
+def index():
+    a="hello "
+    b="world!"
+    return "lah yn3l xitan"
+#     return "Hello world"
+# @app.route('/predict',methods=['POST'])
+@app.route('/')
+def predict():
+    # cgpa = request.form.get('cgpa')
+    # iq = request.form.get('iq')
+    # profile_score = request.form.get('profile_score')
+    # input_query = np.array([[cgpa,iq,profile_score]])
+    # result = model.predict(input_query)[0]
+    # return jsonify({'placement':str(result)})
+    return "s"
 
 
 
 
 
-
+if __name__ == '__main__':
     app.run(debug=True)
