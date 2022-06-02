@@ -7,6 +7,8 @@ from pyarabic.araby import is_arabicrange
 from farasa.stemmer import FarasaStemmer
 import itertools
 import random
+import json
+import requests
 #model = pickle.load(open('model.pkl','rb'))
 
 app = Flask(__name__)
@@ -39,10 +41,10 @@ def predict():
         return text
     df.loc[:,"post_text"] = df.post_text.apply(lambda x : remove_punctuations(x))
 
-    stemmer = FarasaStemmer()
+    #stemmer = FarasaStemmer()
 
-    def lemmatization(text):
-        return stemmer.stem(text)
+#     def lemmatization(text):
+#         return stemmer.stem(text)
     tokenized_postes = [araby.tokenize(post_text, conditions=is_arabicrange) for post_text in df['post_text'].values]
     flat_list = list(itertools.chain(*tokenized_postes))
     new_list=[]
@@ -70,6 +72,15 @@ def predict():
     for i in d:
         text=text.replace(i,d[i])
     text=stemmer.stem(text)
+
+    url = 'https://farasa.qcri.org/webapi/lemmatization/'
+    api_key = "MtYakbZGWQfPUoObzk"
+    payload = {'text': text, 'api_key': api_key}
+    data = requests.post(url, data=payload)
+    text = json.loads(data.text)['text']
+    
+    
+    
     s=text
     s=s.split()
     s = random.choices(s, k=len(s))
