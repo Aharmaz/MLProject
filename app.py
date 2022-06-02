@@ -19,15 +19,15 @@ app = Flask(__name__)
 
 
 
-@app.route('/predict',methods=['POST'])
-# @app.route('/')
+#@app.route('/predict',methods=['POST'])
+@app.route('/')
 def index():
     a="hello "
     b="world!"
     return "lah yn3l xitan"
 #     return "Hello world"
-# @app.route('/predict',methods=['POST'])
-@app.route('/')
+@app.route('/predict',methods=['POST'])
+#@app.route('/')
 def predict():
     data=pd.read_json("arabicPresidentJson.json")
     # cgpa = request.form.get('cgpa')
