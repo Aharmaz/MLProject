@@ -10,6 +10,23 @@ from flask import Flask,request,jsonify
 
 
 
+
+
+
+
+
+
+
+
+
+
+app = Flask(__name__)
+
+
+
+
+
+
 import string
 import pandas as pd
 import pyarabic.araby as araby
@@ -18,7 +35,7 @@ from pyarabic.araby import is_arabicrange
 # nltk.download('stopwords')
 # from gensim.models import Word2Vec , KeyedVectors
 # from nltk.corpus import stopwords
-df = pd.read_json('./arabicPresidentJson.json')
+df = pd.read_json("arabicPresidentJson.json")
 arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
 english_punctuations = string.punctuation
 punctuations_list = arabic_punctuations + english_punctuations
@@ -42,8 +59,8 @@ def lemmatization(text):
 
 # df.loc[0:5,"post_text"] = df.post_text.apply(lambda x : lemmatization(x))
 # df.head()
-s=" عرفت بالمدرسة الوطنية للعلوم التطبيقية على غرار وكلية الطب و الصيدلة مجموعة من الانشطة. المدرسة الوطنية للعلوم التطبيقية"
-s=lemmatization(s)
+# s=" عرفت بالمدرسة الوطنية للعلوم التطبيقية على غرار وكلية الطب و الصيدلة مجموعة من الانشطة. المدرسة الوطنية للعلوم التطبيقية"
+# s=lemmatization(s)
 
 # def remove_stopWords(s):
 #     stopwords_arabic = set(stopwords.words('arabic'))
@@ -133,9 +150,6 @@ for i in d:
 
 
 
-
-
-app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 # @app.route('/')
 def index():
