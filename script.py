@@ -14,10 +14,10 @@ import string
 import pandas as pd
 import pyarabic.araby as araby
 from pyarabic.araby import is_arabicrange
-import nltk
+# import nltk
 # nltk.download('stopwords')
 # from gensim.models import Word2Vec , KeyedVectors
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 df = pd.read_json('/app/arabicPresidentJson.json')
 arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
 english_punctuations = string.punctuation
@@ -45,11 +45,11 @@ def lemmatization(text):
 s=" عرفت بالمدرسة الوطنية للعلوم التطبيقية على غرار وكلية الطب و الصيدلة مجموعة من الانشطة. المدرسة الوطنية للعلوم التطبيقية"
 s=lemmatization(s)
 
-def remove_stopWords(s):
-    stopwords_arabic = set(stopwords.words('arabic'))
+# def remove_stopWords(s):
+#     stopwords_arabic = set(stopwords.words('arabic'))
 
-    s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
-    return s
+#     s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
+#     return s
 
 #df.loc[:,"post_text"] = df.post_text.apply(lambda x: remove_stopWords(x))
 
