@@ -36,7 +36,7 @@ def predict():
     # input_query = np.array([[cgpa,iq,profile_score]])
     # result = model.predict(input_query)[0]
     # return jsonify({'placement':str(result)})
-    return data.shape
+    return str(data.shape)
 
 
 
