@@ -30,13 +30,67 @@ def index():
 #@app.route('/')
 def predict():
     data=pd.read_json("arabicPresidentJson.json")
-    # cgpa = request.form.get('cgpa')
-    # iq = request.form.get('iq')
-    # profile_score = request.form.get('profile_score')
-    # input_query = np.array([[cgpa,iq,profile_score]])
-    # result = model.predict(input_query)[0]
+    arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
+    english_punctuations = string.punctuation
+    punctuations_list = arabic_punctuations + english_punctuations
+    def remove_punctuations(text):
+        for c in punctuations_list:
+            text = text.replace(c," ")
+        return text
+    df.loc[:,"post_text"] = df.post_text.apply(lambda x : remove_punctuations(x))
+
+    stemmer = FarasaStemmer()
+
+    def lemmatization(text):
+        return stemmer.stem(text)
+    tokenized_postes = [araby.tokenize(post_text, conditions=is_arabicrange) for post_text in df['post_text'].values]
+    flat_list = list(itertools.chain(*tokenized_postes))
+    new_list=[]
+    for s in flat_list:
+        if s in ["ووجدة","بوجدة","وجدة"]:
+            new_list.append("oujda")
+        elif s in ["وفاس","بفاس","فاس"]:
+            new_list.append("fes")
+        elif s in ["وبركان","ببركان","بركان"]:
+            new_list.append("berkan")
+        else:
+            new_list.append(s)
+    text = ' '.join(a for a in new_list)
+    d={
+        "المدرسة الوطنية للعلوم التطبيقية":"ensa",
+        "كلية الطب والصيدلة":"fmp",
+        "المدرسة الوطنية للتجارة و التسيير":"encg",
+        "المدرسة العليا للتكنلوجيا":"est",
+        " الكلية متعددة التخصصات بالناظور":"fpn",
+        "لكلية متعددة التخصصات بتاوريرت":"fpt",
+        "كلية العلوم":"fso",
+        "كلية الاداب والعلوم الانسانية":"flsh",
+        "كلية العلوم القانونية والاقتصادية والاجتماعيية":"fsjes"
+        }
+    for i in d:
+        text=text.replace(i,d[i])
+    text=stemmer.stem(text)
+    s=text
+    s=s.split()
+    s = random.choices(s, k=len(s))
+    s = ' '.join(a for a in s)
+    d={
+        "المدرسة الوطنية للعلوم التطبيقية":"ensa",
+        "كلية الطب والصيدلة":"fmp",
+        "المدرسة الوطنية للتجارة و التسيير":"encg",
+        "المدرسة العليا للتكنلوجيا":"est",
+        " الكلية متعددة التخصصات بالناظور":"fpn",
+        "لكلية متعددة التخصصات بتاوريرت":"fpt",
+        "كلية العلوم":"fso",
+        "كلية الاداب والعلوم الانسانية":"flsh",
+        "كلية العلوم القانونية والاقتصادية والاجتماعيية":"fsjes",
+        "فاس":"fes",
+        "وجدة":"oujda"
+        }
+    for i in d:
+        s=s.replace(d[i],i)
     # return jsonify({'placement':str(result)})
-    return str(data.shape)
+    return s
 
 
 
