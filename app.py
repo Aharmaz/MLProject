@@ -29,7 +29,7 @@ def index():
 @app.route('/predict',methods=['POST'])
 #@app.route('/')
 def predict():
-    data=pd.read_json("arabicPresidentJson.json")
+    df=pd.read_json("arabicPresidentJson.json")
     arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
     english_punctuations = string.punctuation
     punctuations_list = arabic_punctuations + english_punctuations
