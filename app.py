@@ -101,7 +101,7 @@ def predict():
     for i in d:
          s=s.replace(d[i],i)
     # return jsonify({'placement':str(result)})
-    return s
+    return text
 
 
 
