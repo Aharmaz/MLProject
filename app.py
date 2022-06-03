@@ -12,6 +12,7 @@ import requests
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+    import json
 #model = pickle.load(open('model.pkl','rb'))
 
 app = Flask(__name__)
@@ -109,7 +110,12 @@ def predict():
     for i in d:
          s=s.replace(d[i],i)
     # return jsonify({'placement':str(result)})
-    return s
+    t=s.split()
+    nlp_words=nltk.FreqDist(t)
+    dictionnary=dict(nlp_words)
+    json_object=json.dumps(dictionnary,ensure_ascii=False,indent=4)
+    return jsonify({'placement':str(json_object)})
+#     return s
 
 
 
