@@ -10,7 +10,7 @@ import random
 import json
 import requests
 import nltk
-#nltk.download('stopwords')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 #model = pickle.load(open('model.pkl','rb'))
 
