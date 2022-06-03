@@ -41,10 +41,10 @@ def predict():
         return text
     df.loc[:,"post_text"] = df.post_text.apply(lambda x : remove_punctuations(x))
     def remove_stopWords(s):
-    stopwords_arabic = set(stopwords.words('arabic'))
+        stopwords_arabic = set(stopwords.words('arabic'))
 
-    s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
-    return s
+        s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
+        return s
 
     df.loc[:,"post_text"] = df.post_text.apply(lambda x: remove_stopWords(x))
     stemmer = FarasaStemmer()
