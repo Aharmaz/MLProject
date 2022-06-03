@@ -1,5 +1,5 @@
 #web: gunicorn app:script
 #worker: python app.py
-sudo apt-get install default-jre
+heroku buildpacks:add heroku/jvm
 web: gunicorn app:app
 
