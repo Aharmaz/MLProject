@@ -114,7 +114,7 @@ def predict():
     nlp_words=nltk.FreqDist(t)
     dictionnary=dict(nlp_words)
     json_object=json.dumps(dictionnary,ensure_ascii=False,indent=4)
-    return jsonify({'placement':str(json_object)})
+    return jsonify([str(json_object)])
 #     return s
 
 
