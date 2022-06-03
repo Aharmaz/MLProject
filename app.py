@@ -12,7 +12,7 @@ import requests
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
-    import json
+import json
 #model = pickle.load(open('model.pkl','rb'))
 
 app = Flask(__name__)
