@@ -81,10 +81,10 @@ def predict():
     
     
     
-     s=text
-     s=s.split()
-     s = random.choices(text, k=len(s))
-     s = ' '.join(a for a in s)
+    s=text
+    s=s.split()
+    s = random.choices(text, k=len(s))
+    s = ' '.join(a for a in s)
     d={
         "المدرسة الوطنية للعلوم التطبيقية":"ensa",
         "كلية الطب والصيدلة":"fmp",
