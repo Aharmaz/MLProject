@@ -6,4 +6,5 @@ farasapy
 pyarabic
 requests
 pandas
+nltk
 
