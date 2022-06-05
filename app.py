@@ -127,7 +127,7 @@ def predict():
             txt='text:{key},frequency:{value}'.format(key=key,value=value)
             output.write(txt)
         output.write("}")
-    inp=open("clean.json","r")
+    inp=open("/app/clean.json","r")
     lines=inp.read()  
     return jsonify([lines])
 #     return s
