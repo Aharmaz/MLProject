@@ -114,11 +114,11 @@ def predict():
     nlp_words=nltk.FreqDist(t)
     dictionnary=dict(nlp_words)
     json_object=json.dumps(dictionnary,ensure_ascii=False,indent=4)
-    with open("sample.json","w") as outfile:
+    with open("/app/sample.json","w") as outfile:
         outfile.write(json_object)
-    inp=open("sample.json","r")
+    inp=open("/app/sample.json","r")
     lines=inp.readlines()
-    with open("clean.json","w") as output:
+    with open("/app/clean.json","w") as output:
         output.write("{\n")
         for line in lines[1:-1]:
             i=line.index(":")
