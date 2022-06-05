@@ -124,7 +124,8 @@ def predict():
             i=line.index(":")
             key=line[:i]
             value=line[i:]
-            txt='text:{key},frequency:{value}'.format(key=key,value=value)
+            txt=f'text:{key},\nfrequency:{value}'
+            text="{\n"+txt+"}\n"
             output.write(txt)
         output.write("}")
     inp=open("/app/clean.json","r")
