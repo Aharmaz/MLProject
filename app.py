@@ -123,10 +123,10 @@ def predict():
         for line in lines[1:-1]:
             i=line.index(":")
             key=line[:i]
-            value=line[i:]
+            value=line[i+1:]
             txt=f'text:{key},\nfrequency:{value}'
             text="{\n"+txt+"}\n"
-            output.write(txt)
+            output.write(text)
         output.write("}")
     inp=open("/app/clean.json","r")
     lines=inp.read()  
