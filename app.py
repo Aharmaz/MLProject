@@ -128,7 +128,7 @@ def predict():
             output.write(txt)
         output.write("}")
        
-    return jsonify([str(open('/app/clean.json', 'rb')))])
+    return jsonify([str(open('/app/clean.json', 'rb'))])
 #     return s
 
 
