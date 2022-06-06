@@ -151,6 +151,9 @@ def predict():
 #     for i in d:
 #          s=s.replace(d[i],i)
     # return jsonify({'placement':str(result)})
+    stopwords_arabic = set(stopwords.words('arabic'))
+    stopwords_arabic
+    s = ' '.join(word for word in text.split() if word not in stopwords_arabic)
     t=s.split()
     nlp_words=nltk.FreqDist(t)
     dictionnary=dict(nlp_words)
