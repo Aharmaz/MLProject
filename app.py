@@ -55,15 +55,15 @@ def predict():
         with open('list.txt', 'r') as f:
             listl = []
             for line in f:
-            strip_lines = line.strip()
-            listli = strip_lines.split()
-            m = listl.append(listli)
+                strip_lines = line.strip()
+                listli = strip_lines.split()
+                m = listl.append(listli)
 
-            new_list =[word for sublist in listl for word in sublist]
-            stopwords_arabic = set(new_list)
+        new_list =[word for sublist in listl for word in sublist]
+        stopwords_arabic = set(new_list)
 
-            s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
-         return s
+        s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
+        return s
 
 
 
