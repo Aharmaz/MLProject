@@ -44,11 +44,31 @@ def predict():
             text = text.replace(c," ")
         return text
     df.loc[:,"post_text"] = df.post_text.apply(lambda x : remove_punctuations(x))
-    def remove_stopWords(s):
-        stopwords_arabic = set(stopwords.words('arabic'))
+#     def remove_stopWords(s):
+#         stopwords_arabic = set(stopwords.words('arabic'))
 
-        s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
-        return s
+#         s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
+#         return s
+
+
+    def remove_stopWords(s):
+        with open('list.txt', 'r') as f:
+            listl = []
+            for line in f:
+            strip_lines = line.strip()
+            listli = strip_lines.split()
+            m = listl.append(listli)
+
+            new_list =[word for sublist in listl for word in sublist]
+            stopwords_arabic = set(new_list)
+
+            s = ' '.join(word for word in s.split() if word not in stopwords_arabic)
+         return s
+
+
+
+
+
 
     df.loc[:,"post_text"] = df.post_text.apply(lambda x: remove_stopWords(x))
     stemmer = FarasaStemmer()
@@ -65,19 +85,40 @@ def predict():
             new_list.append("fes")
         elif s in ["وبركان","ببركان","بركان"]:
             new_list.append("berkan")
+        elif s in ["وتاوريرت","بتاوريرت","تاوريرت"]:
+            new_list.append("TAOURIRT")
+        elif s in ["والناظور","بالناظور","الناظور"]:
+            new_list.append("NADOR")
+        elif s in ["والناضور","بالناضور","الناضور"]:
+            new_list.append("NADOR")
+        elif s in ["ومكناس","بمكناس","مكناس"]:
+            new_list.append("MEKNES")  
+        elif s in ["وإفران","بإفران","إفران"]:
+            new_list.append("IFRANE")  
+        elif s in ["وسلا","بسلا","سلا"]:
+            new_list.append("SALE")  
+        elif s in ["والرباط","بالرباط","الرباط"]:
+            new_list.append("RABAT")  
+        elif s in ["والدار البيضاء","بالدار البيضاء","الدار البيضاء"]:
+            new_list.append("CASABLANCA") 
+        elif s in ["والمحمدية","بالمحمدية","المحمدية"]:
+            new_list.append("MOHAMMEDIA") 
+        elif s in ["وسطات","بسطات","سطات"]:
+            new_list.append("SETTAT") 
         else:
             new_list.append(s)
     text = ' '.join(a for a in new_list)
     d={
-        "المدرسة الوطنية للعلوم التطبيقية":"ensa",
-        "كلية الطب والصيدلة":"fmp",
-        "المدرسة الوطنية للتجارة و التسيير":"encg",
-        "المدرسة العليا للتكنلوجيا":"est",
-        " الكلية متعددة التخصصات بالناظور":"fpn",
-        "لكلية متعددة التخصصات بتاوريرت":"fpt",
-        "كلية العلوم":"fso",
-        "كلية الاداب والعلوم الانسانية":"flsh",
-        "كلية العلوم القانونية والاقتصادية والاجتماعيية":"fsjes"
+        "المدرسة الوطنية للعلوم التطبيقية":"ENSA",
+        "كلية الطب والصيدلة":"FMP",
+        "المدرسة الوطنية للتجارة و التسيير":"ENCG",
+        "المدرسة العليا للتكنلوجيا":"EST",
+        " الكلية متعددة التخصصات بالناظور":"FPN",
+        "لكلية متعددة التخصصات بتاوريرت":"FPT",
+        "كلية العلوم":"FS",
+        "كلية الاداب والعلوم الانسانية":"FLSH",
+        "كلية العلوم القانونية والاقتصادية والاجتماعيية":"FSJES",
+        "جامعة الأخوين":"FFRERES"
         }
     for i in d:
         text=text.replace(i,d[i])
@@ -91,24 +132,24 @@ def predict():
     
     
     
-    s=text.split()
-    s = random.choices(s, k=len(s))
-    s = ' '.join(a for a in s)
-    d={
-        "المدرسة الوطنية للعلوم التطبيقية":"ensa",
-        "كلية الطب والصيدلة":"fmp",
-        "المدرسة الوطنية للتجارة و التسيير":"encg",
-        "المدرسة العليا للتكنلوجيا":"est",
-        " الكلية متعددة التخصصات بالناظور":"fpn",
-        "لكلية متعددة التخصصات بتاوريرت":"fpt",
-        "كلية العلوم":"fso",
-        "كلية الاداب والعلوم الانسانية":"flsh",
-        "كلية العلوم القانونية والاقتصادية والاجتماعيية":"fsjes",
-        "فاس":"fes",
-        "وجدة":"oujda"
-        }
-    for i in d:
-         s=s.replace(d[i],i)
+#     s=text.split()
+#     s = random.choices(s, k=len(s))
+#     s = ' '.join(a for a in s)
+#     d={
+#         "المدرسة الوطنية للعلوم التطبيقية":"ensa",
+#         "كلية الطب والصيدلة":"fmp",
+#         "المدرسة الوطنية للتجارة و التسيير":"encg",
+#         "المدرسة العليا للتكنلوجيا":"est",
+#         " الكلية متعددة التخصصات بالناظور":"fpn",
+#         "لكلية متعددة التخصصات بتاوريرت":"fpt",
+#         "كلية العلوم":"fso",
+#         "كلية الاداب والعلوم الانسانية":"flsh",
+#         "كلية العلوم القانونية والاقتصادية والاجتماعيية":"fsjes",
+#         "فاس":"fes",
+#         "وجدة":"oujda"
+#         }
+#     for i in d:
+#          s=s.replace(d[i],i)
     # return jsonify({'placement':str(result)})
     t=s.split()
     nlp_words=nltk.FreqDist(t)
