@@ -121,11 +121,13 @@ def predict():
     with open("/app/clean.json","w") as output:
 #         output.write("{\n")
         for line in lines[1:-1]:
+            if line[-2]!=",":
+                line=line+","
             i=line.index(":")
             key=line[:i]
-            value=line[i+1:]
-            txt=f'text:{key},\nfrequency:{value}'
-            text="{\n"+txt+"}\n"
+            value=line[i+1:-2]
+            txt=f'"text":{key},\n"frequency":{value}'
+            text="{\n"+txt+"},\n"
             output.write(text)
 #         output.write("}")
     inp=open("/app/clean.json","r")
