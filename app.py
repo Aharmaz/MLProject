@@ -32,13 +32,13 @@ def index():
     b="world!"
     return "lah yn3l xitan"
 #     return "Hello world"
-@app.route('/predict',methods=['POST'])
-def predict():
+@app.route('/test',methods=['POST'])
+def test():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         json = request.json
     return json
-@app.route('/pred',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 #@app.route('/')
 def predict():
     df=pd.read_json("arabicPresidentJson.json")
