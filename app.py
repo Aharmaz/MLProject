@@ -34,6 +34,7 @@ def index():
 #     return "Hello world"
 @app.route('/test',methods=['POST'])
 def test():
+    json={"a":"B"}
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         json = request.json
