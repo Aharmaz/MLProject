@@ -157,7 +157,11 @@ def predict():
     t=s.split()
     nlp_words=nltk.FreqDist(t)
     dictionnary=dict(nlp_words)
-    json_object=json.dumps(dictionnary,ensure_ascii=False,indent=4)
+    sort_data = sorted(dictionnary.items(), key=lambda x: x[1], reverse=True)
+    new_dict={}
+    for i in range(len(sort_data)):
+        new_dict[sort_data[i][0]]=sort_data[i][1];
+    json_object=json.dumps(new_dict,ensure_ascii=False,indent=4)
     with open("/app/sample.json","w") as outfile:
         outfile.write(json_object)
     inp=open("/app/sample.json","r")
