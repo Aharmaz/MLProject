@@ -1,5 +1,5 @@
 
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,render_template
 import string
 import pandas as pd
 import pyarabic.araby as araby
@@ -176,7 +176,8 @@ def predict():
 #         output.write("}")
     inp=open("/app/clean.json","r")
     lines=inp.read()  
-    return jsonify([lines])
+    #return jsonify([lines])
+    return render_template(jsonify([lines]))
 #     return s
 
 
