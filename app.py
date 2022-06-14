@@ -177,7 +177,7 @@ def predict():
     inp=open("/app/clean.json","r")
     lines=inp.read()  
     #return jsonify([lines])
-    return [lines]
+    return lines
 #     return s
 
 
