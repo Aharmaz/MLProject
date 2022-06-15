@@ -39,11 +39,12 @@ def test():
     if (content_type == 'application/json'):
         json = request.json
     #return json
-    return predict()
+    return predict(json)
 @app.route('/predict',methods=['POST'])
 #@app.route('/')
-def predict():
-    df=pd.read_json("arabicPresidentJson.json")
+def predict(json):
+    #df=pd.read_json("arabicPresidentJson.json")
+    df=pd.DataFrame.from_dict(json,orient="index",columns=["post_text"])
     arabic_punctuations = '''`÷×؛<>_()*&^%][ـ،/:"؟.,'{}~¦+|!”…“–ـ'''
     english_punctuations = string.punctuation
     punctuations_list = arabic_punctuations + english_punctuations
