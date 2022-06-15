@@ -38,7 +38,8 @@ def test():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         json = request.json
-    return json
+    #return json
+    return predict()
 @app.route('/predict',methods=['POST'])
 #@app.route('/')
 def predict():
