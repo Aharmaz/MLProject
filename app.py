@@ -39,7 +39,7 @@ def test():
     if (content_type == 'application/json'):
         json = request.json
     if(json=={}):
-        json={"text" : no post found!","frequency":20}
+        json={"text" :"no post found!","frequency":20}
     #return json
     return predict(json)
 @app.route('/predict',methods=['POST'])
