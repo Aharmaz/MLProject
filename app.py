@@ -38,8 +38,6 @@ def test():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         json = request.json
-    if(request.json =="{}"):
-        json={\"text\" : \"no post found!\",\"frequency\":20}
     #return json
     return predict(json)
 @app.route('/predict',methods=['POST'])
